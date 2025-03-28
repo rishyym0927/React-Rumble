@@ -1,4 +1,3 @@
-/* App container styling */
 .app-container {
   text-align: center;
   padding: 50px;
@@ -11,7 +10,6 @@
   justify-content: center;
 }
 
-/* Flickering heading effect */
 .flicker-text {
   font-size: 2em;
   color: white;
@@ -23,28 +21,16 @@
   100% { opacity: 0.5; }
 }
 
-/* Button styling */
-.open-btn, .close-btn {
+.open-btn {
   padding: 10px 15px;
   border: none;
   cursor: pointer;
+  background: green;
+  color: white;
   border-radius: 5px;
   font-size: 16px;
 }
 
-.open-btn {
-  background: green;
-  color: white;
-}
-
-.close-btn {
-  background: red;
-  color: white;
-  display: block;
-  margin: 20px auto;
-}
-
-/* Overlay with sliding effect */
 .overlay {
   position: fixed;
   top: 0;
@@ -62,10 +48,21 @@
   left: 0;
 }
 
-/* Modal box styling */
 .modal-box {
   background: rgba(255, 255, 255, 0.85);
   padding: 30px;
   border-radius: 10px;
   text-align: center;
+}
+
+.close-btn {
+  background: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  display: block;
+  margin: 20px auto;
 }
