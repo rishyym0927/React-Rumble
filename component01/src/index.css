@@ -30,6 +30,7 @@ body {
   min-height: 100vh;
 }
 
+/* Default light mode styles */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -54,6 +55,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light mode overrides if system prefers light */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -65,4 +67,31 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Dark mode overrides using a dark class on body */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark a {
+  color: #8ab4f8;
+}
+body.dark a:hover {
+  color: #a1c2fa;
+}
+
+body.dark button {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #444444;
+}
+body.dark button:hover {
+  border-color: #646cff;
+}
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
 }
