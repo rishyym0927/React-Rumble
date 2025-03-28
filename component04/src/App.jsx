@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Accordion from "./components/Accordion";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const faqData = [
+    { question: "What is React?", answer: "React is a JavaScript library for building user interfaces." },
+    { question: "How does useState work?", answer: "useState is a React Hook that allows you to add state to functional components." },
+    { question: "Is React good for beginners?", answer: "Yes! React is beginner-friendly and widely used in the industry." }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>FAQ Section</h1>
+      <Accordion items={faqData} allowMultipleOpen={true} />
+    </div>
+  );
 }
 
-export default App
+export default App;
