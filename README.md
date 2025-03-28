@@ -51,7 +51,7 @@ Build a shopping cart system that:
 - 🔄 Persists cart state using local storage
 
 
-- ### 2. Stopwatch ⏱️  ( component 8)
+ ### 2. Stopwatch ⏱️  ( component 8)
 - Start, pause, and reset buttons.  
 - Displays elapsed time in `mm:ss` format.  
 - Lap time feature.(use `fs` to write time stamps in a fill / use array and append timestamps)
