@@ -56,6 +56,15 @@ Build a shopping cart system that:
 - Displays elapsed time in `mm:ss` format.  
 - Lap time feature.(use `fs` to write time stamps in a fill / use array and append timestamps)
 - Initial tailwind. Bonus points for better styling.
+  
+### 3. 🌍 Country-State-City Selector  (component 9)
+
+Implement three dependent dropdowns using:  
+- 🌐 [CountryStateCity API](https://countrystatecity.in)
+- 
+- ⏳ Asynchronous API calls  
+- ↪️ Cascade selection (Country  → City)  
+- 🚧 Error handling for API failures
 
 
 ## 📤 Submission Guide
