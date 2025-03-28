@@ -4,6 +4,15 @@
   padding: 2rem;
   text-align: center;
 }
+/* Full-page container to center the skeleton card */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   /* Full viewport height */
+  background-color: #242424; /* Light background for better contrast */
+}
 
 .logo {
   height: 6em;

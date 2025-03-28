@@ -1,0 +1,58 @@
+/* Skeleton Loading Animation */
+.skeleton {
+    background: linear-gradient(90deg, #414141 25%, #f0f0f0 50%, #414141 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite linear;
+    border-radius: 4px;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Card Container */
+  .skeleton-card {
+    width: 500px;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    background: #4d4d4d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Skeleton Elements */
+  .skeleton-image {
+    width: 80%;
+    height: 50%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    margin-top: 30px;
+  }
+  
+  .skeleton-title {
+    width: 80%;
+    margin-bottom: 30px;
+    height: 30px;
+  }
+  
+  .skeleton-text {
+    width: 80%;
+    height: 10px;
+    margin: 0px;
+  }
+  
+  .skeleton-button {
+    margin-top: 10%;
+    width: 50%;
+    height: 50px;
+    border-radius: 6px;
+  }
+  
