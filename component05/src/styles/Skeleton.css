@@ -1,0 +1,44 @@
+.skeleton {
+    background-color: #ddd;
+    border-radius: 4px;
+    margin: 10px 0;
+    animation: shimmer 1.5s infinite linear;
+  }
+  
+  @keyframes shimmer {
+    0% { background-color: #eee; }
+    50% { background-color: #ddd; }
+    100% { background-color: #eee; }
+  }
+  
+  .skeleton.image {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .skeleton.title {
+    width: 60%;
+    height: 20px;
+  }
+  
+  .skeleton.text {
+    width: 80%;
+    height: 15px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .card {
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
