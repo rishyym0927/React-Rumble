@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import SkeletonLoader from "./SkeletonLoader.jsx";
+import SkeletonCard from "./SkeletonCard.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetching fake data from an API
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false); // Stop showing loader
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="p-6 space-y-4">
+      <h1 className="text-xl font-bold">📦 API Data with Skeleton Loader</h1>
 
-export default App
+      {/* Show skeleton while loading, otherwise show actual data */}
+      {loading ? (
+        <SkeletonLoader width="w-40" height="h-8" />
+      ) : (
+        <p className="text-lg font-semibold">{data.title}</p>
+      )}
+
+      {/* Show skeleton for image (simulating API response) */}
+      {loading ? (
+        <SkeletonLoader width="w-40" height="h-40" rounded="rounded-lg" />
+      ) : (
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Loaded"
+          className="w-40 h-40 rounded-lg"
+        />
+      )}
+    </div>
+  );
+};
+
+export default App;
