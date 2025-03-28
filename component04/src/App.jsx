@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import styled from "styled-components";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
-function App() {
-  const [count, setCount] = useState(0)
+const Container = styled.div`
+  max-width: 700px;
+  margin: 50px auto;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+`;
+
+const AccordionItem = styled.div`
+  background: #f9f9f9;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+`;
+
+const AccordionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff6b6b;
+  color: white;
+  padding: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.3s;
+
+  &:hover {
+    background: #ee5253;
+  }
+`;
+
+const AccordionContent = styled.div`
+  padding: 16px;
+  background: white;
+  color: #555;
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  font-size: 16px;
+  line-height: 1.5;
+  transition: 0.3s ease-in-out;
+`;
+
+const Accordion = ({ items }) => {
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggleItem = (index) => {
+    setOpenIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Container>
+      {items.map((item, index) => (
+        <AccordionItem key={index}>
+          <AccordionHeader onClick={() => toggleItem(index)}>
+            {item.title}
+            {openIndexes.includes(index) ? <FaMinus /> : <FaPlus />}
+          </AccordionHeader>
+          <AccordionContent isOpen={openIndexes.includes(index)}>
+            {item.content}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Container>
+  );
+};
 
-export default App
+const faqItems = [
+  { title: "What is JavaScript?", content: "JavaScript is a programming language used to build interactive web applications." },
+  { title: "How does React work?", content: "React uses a virtual DOM to update only the necessary parts of the UI efficiently." },
+  { title: "What is a component?", content: "A component in React is a reusable piece of UI that can be nested, managed, and reused." },
+];
+
+const App = () => <Accordion items={faqItems} />;
+
+export default App;
