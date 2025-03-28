@@ -59,9 +59,9 @@ Build a shopping cart system that:
   
 ### 3. 🌍 Country-State-City Selector  (component 9)
 
-Implement three dependent dropdowns using:  
+Implement two dependent dropdowns using:  
+
 - 🌐 [CountryStateCity API](https://countrystatecity.in)
-- 
 - ⏳ Asynchronous API calls  
 - ↪️ Cascade selection (Country  → City)  
 - 🚧 Error handling for API failures
