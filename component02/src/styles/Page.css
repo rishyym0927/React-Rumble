@@ -1,0 +1,25 @@
+.page-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.accordion .faq-item {
+  margin: 10px 0;
+}
+
+details {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

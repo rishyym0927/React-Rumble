@@ -1,0 +1,24 @@
+.main-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.theme-toggle {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.nav-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+}

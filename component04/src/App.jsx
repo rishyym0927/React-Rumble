@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const faqs = [
+  { question: "What is Vite?", answer: "Vite is a next-generation frontend tool that improves development experience." },
+  { question: "What is React?", answer: "React is a JavaScript library for building user interfaces." },
+  { question: "How do I install dependencies?", answer: "You can install dependencies using npm or yarn." }
+];
 
+function AccordionItem({ faq, isOpen, onClick }) {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="accordion-item">
+      <button className="accordion-header" onClick={onClick}>
+        {faq.question}
+      </button>
+      {isOpen && <p className="accordion-content">{faq.answer}</p>}
+    </div>
+  );
 }
 
-export default App
+function App() {
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggleAccordion = (index) => {
+    setOpenIndexes(prevIndexes => 
+      prevIndexes.includes(index) 
+        ? prevIndexes.filter(i => i !== index) 
+        : [...prevIndexes, index]
+    );
+  };
+
+  return (
+    <div className="app-container">
+      <h1>FAQ Section</h1>
+      <div className="accordion">
+        {faqs.map((faq, index) => (
+          <AccordionItem
+            key={index}
+            faq={faq}
+            isOpen={openIndexes.includes(index)}
+            onClick={() => toggleAccordion(index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
