@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Papa from 'papaparse';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+function Table() {
+  const [data, setData] = useState([]);
+  const [sortAsc, setSortAsc] = useState(true);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    fetch('/Data.csv')
+      .then(response => response.text())
+      .then(csvText => {
+        console.log("Raw CSV Data:", csvText); // Debugging
+        Papa.parse(csvText, {
+          header: true,
+          complete: (result) => {
+            console.log("Parsed Data:", result.data); // Debugging
+            setData(result.data);
+          }
+        });
+      })
+      .catch(error => console.error("Error loading CSV:", error));
+  }, []);
+  
+
+  const handleSort = () => {
+    const sortedData = [...data].sort((a, b) => 
+      sortAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+    );
+    setData(sortedData);
+    setSortAsc(!sortAsc);
+  };
+
+  const filteredData = data.filter(item =>
+    item.name?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="table-container">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button onClick={handleSort}>Sort {sortAsc ? '🔼' : '🔽'}</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.name}</td>
+              <td>{row.age}</td>
+              <td>{row.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <div className="App">
+      <h1>Dynamic Table with CSV Import</h1>
+      <Table />
+    </div>
+  );
+}
+
+export default App;
+
