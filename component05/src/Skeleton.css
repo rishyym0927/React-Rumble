@@ -1,0 +1,35 @@
+/* Base skeleton styling */
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Skeleton for text */
+.skeleton.text {
+    height: 12px;
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Skeleton for images */
+.skeleton.image {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+}
+
+/* Skeleton for cards */
+.skeleton.card {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
