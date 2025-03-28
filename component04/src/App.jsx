@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.js
+import React from "react";
+import Accordion from "./components/Accordion";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const faqData = [
+    {
+      id: 1,
+      question: "🔥 What is React?",
+      answer:
+        "React is an open-source JavaScript library for building user interfaces, especially for single-page applications.",
+    },
+    {
+      id: 2,
+      question: "⚡ Why use React?",
+      answer:
+        "React allows developers to create large web applications that can update and render efficiently without reloading the page.",
+    },
+    {
+      id: 3,
+      question: "🎨 How do hooks work in React?",
+      answer:
+        "Hooks let you use state and other React features without writing a class. Some common hooks are useState, useEffect, and useContext.",
+    },
+    {
+      id: 4,
+      question: "📚 What is JSX?",
+      answer:
+        "JSX is a syntax extension for JavaScript that looks similar to XML or HTML. It allows you to write UI components in a declarative way.",
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <h1>🎭 Advanced FAQ Section</h1>
+      <Accordion items={faqData} allowMultipleOpen={true} />
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,122 @@
+/* Modal overlay with smooth blur effect */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Darker for depth */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  /* Enhanced modal container with glassmorphism */
+  .modal-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px);
+    width: 450px;
+    max-width: 90%;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); /* Stronger shadow for depth */
+    animation: slideDown 0.3s ease-out, fadeIn 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Border for glass effect */
+  }
+  
+  /* Modal header with gradient and glow */
+  .modal-header {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    padding: 16px 20px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal title with bold and shadow */
+  .modal-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Close button with hover animation */
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .close-btn:hover {
+    color: #ff4d4d;
+    transform: rotate(90deg); /* Rotate animation on hover */
+  }
+  
+  /* Modal body with soft glow */
+  .modal-body {
+    padding: 24px;
+    font-size: 16px;
+    color: #444;
+    background: rgba(255, 255, 255, 0.6);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal footer with improved button spacing */
+  .modal-footer {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Modal action button with gradient and glow */
+  .modal-action-btn {
+    background: linear-gradient(135deg, #4caf50, #43e97b);
+    color: white;
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(67, 233, 123, 0.5);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .modal-action-btn:hover {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    box-shadow: 0 6px 18px rgba(67, 233, 123, 0.7);
+  }
+  
+  /* Fade and slide-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
