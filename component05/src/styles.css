@@ -1,0 +1,47 @@
+/* Skeleton Loader Styles */
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+  }
+  
+  .skeleton-text {
+    width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .skeleton-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+  }
+  
+  .skeleton-card {
+    width: 300px;
+    height: 200px;
+    border-radius: 12px;
+  }
+  
+  /* Loading Animation */
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* General Styling */
+  .app-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .content {
+    margin-top: 20px;
+  }
+  

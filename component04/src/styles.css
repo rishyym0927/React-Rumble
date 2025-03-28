@@ -1,0 +1,126 @@
+/* Default Light Mode */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background 0.4s, color 0.4s;
+  }
+  
+  /* Dark Mode */
+  body.dark {
+    background-color: #222;
+    color: white;
+  }
+  
+  /* App Container */
+  .app {
+    max-width: 600px;
+    width: 90%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.4s;
+  }
+  
+  body.dark .app {
+    background: #333;
+  }
+  
+  /* Accordion Styling */
+  .accordion-container {
+    margin-top: 20px;
+  }
+  
+  .accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    transition: background 0.3s;
+  }
+  
+  body.dark .accordion-item {
+    background: #444;
+  }
+  
+  .accordion-header {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  body.dark .accordion-header {
+    background-color: #0056b3;
+  }
+  
+  .accordion-header:hover {
+    background-color: #0056b3;
+  }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding: 0 15px;
+    background-color: #f9f9f9;
+  }
+  
+  body.dark .accordion-content {
+    background-color: #555;
+  }
+  
+  .accordion-content.show {
+    max-height: 100px;
+    padding: 10px 15px;
+  }
+  
+  .arrow {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .arrow.open {
+    transform: rotate(180deg);
+  }
+  
+  /* Theme Toggle Button */
+  .theme-toggle {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+  }
+  
+  body.dark .theme-toggle {
+    background: #ffcc00;
+    color: #222;
+  }
+  
+  .theme-toggle:hover {
+    background: #0056b3;
+  }
+  
+  body.dark .theme-toggle:hover {
+    background: #e6b800;
+  }
+  
