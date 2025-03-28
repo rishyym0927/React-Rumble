@@ -1,32 +1,82 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+const lightTheme = {
+  background: "#ffffff",
+  color: "#000000",
+};
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+const darkTheme = {
+  background: "#121212",
+  color: "#ffffff",
+};
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.color};
+    transition: all 0.3s ease-in-out;
+  }
+`;
+
+const ThemeContext = createContext();
+
+function ThemeProviderComponent({ children }) {
+  const [theme, setTheme] = useState("light");
+  
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      style={{
-        padding: "10px 16px",
-        fontSize: "16px",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        backgroundColor: theme === "light" ? "#007bff" : "#ff4081",
-        color: theme === "light" ? "#ffffff" : "#1a1a1a",
-        transition: "background-color 0.3s ease"
-      }}
-    >
-      {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-    </button>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    </ThemeContext.Provider>
+  );
+}
+
+function Home() {
+  const { toggleTheme } = useContext(ThemeContext);
+  return (
+    <Container>
+      <h1>Home Page</h1>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <Link to="/about">Go to About</Link>
+    </Container>
+  );
+}
+
+function About() {
+  return (
+    <Container>
+      <h1>About Page</h1>
+      <Link to="/">Go to Home</Link>
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+`;
+
+export default function App() {
+  return (
+    <ThemeProviderComponent>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
+    </ThemeProviderComponent>
   );
 }
