@@ -1,0 +1,37 @@
+Name -Kushagra
+Roll no =LCB2024016
+
+1. App Component
+Description:
+The  component serves as the entry point for the application. It acts as the parent container, importing and rendering the other components (, , and ) within a layout.
+Key Features:
+
+How It Was Created:
+
+ Component1
+Description:
+ is a simple, reusable React component. It contains a heading and some content, making it suitable for static or informational sections.
+Key Features:
+
+How It Was Created:
+
+Component2
+Description:
+Similar to ,  is another modular React component with unique content. It demonstrates reusability while maintaining individuality.
+Key Features:
+
+How It Was Created:
+
+3. Component3
+Description:
+ is a functional React component that can represent another modular and reusable element in your application. It demonstrates how to create independent UI components that can be used across different parts of your app.
+Key Features:
+
+How It Was Created:
+
+Component4
+Description:
+ is a functional component that can showcase more complex logic or interactions. Like , it is designed to be reusable but can include additional logic, state management, or dynamic behavior.
+Key Features:
+
+How It Was Created:
