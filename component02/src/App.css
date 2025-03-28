@@ -1,42 +1,77 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+body {
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  display:flex;
+  justify-content:center;
+  align-items: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
 }
 
-@keyframes logo-spin {
+.navbar {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 15px;
+  background: #535454;
+  border-radius: 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
   }
 }
 
-.card {
-  padding: 2em;
+
+.theme-toggle-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #535454, #535454);
+  color: white;
+  border-radius: 20px;
+  transition: transform 0.3s, background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.read-the-docs {
-  color: #888;
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #00c6ff, #007bff);
 }
