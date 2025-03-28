@@ -1,0 +1,50 @@
+.table-container {
+    margin-top: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 60%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .sort-btn {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .sort-btn:hover {
+    background: #0056b3;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  tr:hover {
+    background: #f1f1f1;
+  }
+  

@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  body.light {
+    background: white;
+    color: black;
+  }
+  
+  body.dark {
+    background: #1a1a1a;
+    color: white;
+  }
+  
+  .app {
+    text-align: center;
+    padding: 20px;
+  }
+  
