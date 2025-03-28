@@ -1,0 +1,179 @@
+/* Define Colorful Theme Variables for Light Mode */
+:root[data-theme="light"] {
+    --bg-color: #fffaf0;
+    --text-color: #333;
+    --nav-bg: #ffecd1;
+    --card-bg: #ffffff;
+    --btn-bg: #ff6f61;
+    --btn-text: #ffffff;
+    --btn-hover-bg: #ff3b2e;
+  }
+  
+  /* Dark Mode Variables (optional adjustments for dark mode) */
+  :root[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f1f1f1;
+    --nav-bg: #1e1e1e;
+    --card-bg: #252525;
+    --btn-bg: #bb86fc;
+    --btn-text: #000;
+    --btn-hover-bg: #985eff;
+  }
+  
+  /* Global Styling */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Navbar Styling (assumed in Navbar.css or included in styles.css) */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--nav-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar h1 {
+    font-size: 1.8rem;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* General Page Styles */
+  .page {
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  /* Headings & Paragraphs */
+  h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  /* Cards Container */
+  .cards-container, .services-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* Card Styling */
+  .card, .service-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .card img,
+  .service-card img {
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+  }
+  
+  .card h3, .service-card h3 {
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .card p, .service-card p {
+    padding: 0 1rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Card Hover Effect */
+  .card:hover, .service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* About Page Section */
+  .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .about-section img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .about-text {
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  /* Primary Button Styling */
+  .primary-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .primary-btn:hover {
+    background: var(--btn-hover-bg);
+    transform: translateY(-3px);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .cards-container, .services-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .about-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .about-text {
+      text-align: center;
+    }
+  }
+  

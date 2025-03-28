@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import SkeletonCard from "./SkeletonCard";
+import "./Skeleton.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData([
+        { id: 1, title: "React Skeleton Loader", content: "Fetching API data..." },
+        { id: 2, title: "Optimized UX", content: "Skeletons improve perceived performance." }
+      ]);
+      setLoading(false);
+    }, 3000); // Simulating API delay
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container">
+      <h1>🚀 Skeleton Loading Demo</h1>
+      {loading ? (
+        <>
+          <SkeletonCard />
+          <SkeletonCard />
+        </>
+      ) : (
+        data.map((item) => (
+          <div key={item.id} className="card">
+            <h3>{item.title}</h3>
+            <p>{item.content}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;

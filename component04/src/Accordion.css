@@ -1,0 +1,85 @@
+/* Gradient Background */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Accordion Container */
+.accordion-container {
+  width: 500px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.accordion-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Accordion Item */
+.accordion-item {
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-item.open {
+  background: #ff6b81;
+  color: #fff;
+}
+
+.accordion-header {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-header:hover {
+  background: rgba(255, 107, 129, 0.1);
+}
+
+.icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Accordion Content */
+.accordion-content-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.accordion-item.open .accordion-content-wrapper {
+  max-height: 150px;
+}
+
+.accordion-content {
+  padding: 15px;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+  border-top: 1px solid rgba(255, 107, 129, 0.3);
+}

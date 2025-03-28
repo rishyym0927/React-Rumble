@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+.open_model{
+  background-color: #6200ea;
+  width: 200px;
+  height: 70px;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.open_model:hover{
+  background-color: #3700b3;
+  transform: translateY(-2px);
+}
+.open_model:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.5);
+}
