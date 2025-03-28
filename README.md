@@ -38,6 +38,18 @@ Create a placeholder loading component that:
 - ⏳ Enhances UX while fetching API data
 - ⚡ Supports different shapes (text, images, cards)
 
+## Round 2
+
+
+### 1. 🛒 Shopping Cart Component
+ 
+
+Build a shopping cart system that:
+
+- 🏷️ Allows adding/removing items
+- 💰 Displays total price dynamically
+- 🔄 Persists cart state using local storage
+
 
 
 ## 📤 Submission Guide
