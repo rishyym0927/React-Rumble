@@ -1,0 +1,27 @@
+/* Default Light Mode */
+body[data-theme="light"] {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Dark Mode */
+  body[data-theme="dark"] {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .theme-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    margin: 20px;
+  }
+  
+  .theme-button:hover {
+    background-color: #0056b3;
+  }
+  

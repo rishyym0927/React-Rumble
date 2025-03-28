@@ -1,10 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React, { useState } from "react";
+import Modal from "./Modal";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const App = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setModalOpen(true)}>Open Modal</button>
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} title="Welcome!">
+        <p>This is a reusable modal component.</p>
+      </Modal>
+    </div>
+  );
+};
+
+export default App;
