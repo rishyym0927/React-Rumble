@@ -1,13 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton Loading Component</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .skeleton {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 300px;
+    }
+
+    .skeleton .skeleton-text,
+    .skeleton .skeleton-image,
+    .skeleton .skeleton-card {
+      background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+
+    .skeleton .skeleton-text {
+      height: 16px;
+      width: 100%;
+    }
+
+    .skeleton .skeleton-image {
+      height: 150px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .skeleton .skeleton-card {
+      height: 100px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="skeleton">
+    <div class="skeleton-image"></div>
+    <div class="skeleton-text"></div>
+    <div class="skeleton-text" style="width: 80%;"></div>
+    <div class="skeleton-card"></div>
+  </div>
+</body>
 </html>
