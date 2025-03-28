@@ -1,12 +1,32 @@
-# React + Vite
+# 🌟 Light/Dark Mode Toggle Button in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React-based Light/Dark Mode Toggle Button** that allows users to switch between light and dark themes smoothly.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ **Toggle Between Light & Dark Modes**  
+✅ **Smooth Theme Transition**  
+✅ **Persistent Theme (optional: can store theme preference in localStorage)**  
+✅ **Minimal & Responsive Design**
 
-## Expanding the ESLint configuration
+## 📂 How It Works
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **User clicks the toggle button** – Theme switches between light and dark modes.
+2. **CSS updates the background and text colors** dynamically.
+3. **(Optional) Theme persists using localStorage**, so users retain their preference.
+
+## ⚡ Tech Stack
+
+- **React.js** – Handles component state for theme switching.
+- **CSS** – Manages theme styles and smooth transitions.
+
+## 🎨 Customization
+
+- Modify colors in `ThemeToggle.css` to match your design.
+- Adjust button positioning for better UI placement.
+- Store user preference using `localStorage` if persistence is needed.
+
+---
+
+Let me know if you need any changes! 🚀
+

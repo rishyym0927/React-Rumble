@@ -1,0 +1,27 @@
+.navbar {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	background: #111;
+	padding: 10px;
+	position: fixed; /* Make the navbar stick to the top */
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.navbar a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	padding: 10px;
+}
+
+.navbar a:hover {
+	text-decoration: underline;
+}
+
+.app {
+	padding-top: 50px; /* Prevent content from being hidden under navbar */
+}

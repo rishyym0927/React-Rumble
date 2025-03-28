@@ -1,12 +1,40 @@
-# React + Vite
+# 📊 Dynamic Table in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React-based Dynamic Table** that allows users to **import CSV data**, sort columns, and search within the dataset—all without requiring a page refresh.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ **CSV Import** – Upload a CSV file to populate the table.  
+✅ **Sortable Columns** – Click on any column header to sort in ascending/descending order.  
+✅ **Search Functionality** – Quickly filter rows based on any column value.  
+✅ **Real-time Updates** – Data updates instantly without reloading the page.
 
-## Expanding the ESLint configuration
+## 📂 How It Works
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Upload a CSV file** – The table automatically processes and displays the data.
+2. **Sorting** – Click any column header to toggle sorting between ascending and descending order.
+3. **Search** – Enter keywords in the search bar to filter rows dynamically.
+
+## ⚡ Tech Stack
+
+- **React.js** – For dynamic UI updates.
+- **Papaparse** – To parse CSV files efficiently.
+
+## 🚀 Getting Started
+
+1. **Run the application:**
+   ```bash
+   npm run dev
+   ```
+2. **Upload a CSV file** or place `data.csv` in the `public/` folder for automatic loading.
+
+## 🛠️ Customization
+
+- Modify styles in `CSS` for custom UI.
+- Adjust column sorting behavior in `handleSort` function.
+- Enhance search logic as needed.
+
+---
+
+Let me know if you need any changes! 🚀
+
