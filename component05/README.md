@@ -1,12 +1,31 @@
-# React + Vite
+# Skeleton Loader Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Overview
+This project implements a **Skeleton Loading Component** in React, designed to enhance user experience by displaying animated placeholders while content is being loaded. The skeleton loader mimics the structure of the actual content to provide a smooth and visually appealing transition.
 
-Currently, two official plugins are available:
+## 🎨 Features
+- **Animated Skeleton Loaders**: Uses CSS animations for a smooth shimmer effect.
+- **Customizable Shapes**: Supports different skeleton shapes such as text, images, and cards.
+- **Centered Layout**: Ensures the loader is positioned at the center of the page.
+- **Improved User Experience**: Prevents layout shifts and gives users visual feedback while content loads.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used
+- **React** for the component structure.
+- **CSS** for styling and animation effects.
 
-## Expanding the ESLint configuration
+## 📝 How It Works
+- The **SkeletonLoader** component displays animated placeholder elements before the actual content loads.
+- Different skeleton styles (text, image, card) are defined in the **SkeletonLoader.css** file.
+- The loader is centrally aligned using `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);`
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Screenshot
+![Skeleton Loader](screenshot.png)
+
+## 💡 Customization
+- Modify `SkeletonLoader.css` to change the dimensions, colors, or animation effects.
+- Adjust the loader's position or add new skeleton elements based on your UI needs.
+
+## 🎯 Future Enhancements
+- Add support for dynamic skeleton layouts based on API data.
+- Implement a configurable duration for the skeleton loader.
+- Enhance accessibility with ARIA attributes.

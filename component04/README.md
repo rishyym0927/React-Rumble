@@ -1,12 +1,18 @@
-# React + Vite
+# Accordion/FAQ Section
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
+This project implements an interactive accordion component in React that allows users to expand and collapse FAQ items.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- Expands/collapses content when clicked
+- Supports multiple collapsible items
+- Allows one or multiple items to be open at once
+- Styled using CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏗️ Usage
+1. Open `App.jsx` and modify the `faqItems` array to customize the content.
+2. The `allowMultiple` prop controls whether multiple items can be open at once.
+3. The styles are defined in `Accordion.css`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📝 License
+This project is open-source and available under the MIT License.
