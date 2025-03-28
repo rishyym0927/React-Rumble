@@ -41,7 +41,7 @@ Create a placeholder loading component that:
 ## Round 2
 
 
-### 1. 🛒 Shopping Cart Component
+### 1. 🛒 Shopping Cart Component ( component 6)
  
 
 Build a shopping cart system that:
