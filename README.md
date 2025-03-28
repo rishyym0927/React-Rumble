@@ -69,7 +69,7 @@ git push origin <YourRollNumber>
 ### 6. 🎉 Create a Pull Request (PR)
 1. Go to the GitHub repo.
 2. Click “Compare & Pull Request”.
-3. Title: [YourRollNumber] I did the thing!
+3. Title: [LCI2024019] I did the thing!
 4. Hit send.
 
 Congrats! Your assignment is now someone else’s problem (mine🙂).

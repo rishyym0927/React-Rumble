@@ -1,42 +1,100 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode */
+[data-theme="light"] {
+  --background: #f9f9f9;
+  --text: #333;
+  --primary: #7698c4;
+  --secondary: #f1f1f1;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --background: #333;
+  --text: #f9f9f9;
+  --primary: #7698c4;
+  --secondary: #444;
+}
+
+/* Navbar styling */
+.app-header {
+  background-color: var(--primary);
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  color: white;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar .nav-links li a:hover {
+  text-decoration: underline;
+}
+
+.theme-switcher {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.theme-switcher:hover {
+  background-color: var(--secondary);
+}
+
+/* Page content */
+h2 {
   text-align: center;
+  margin: 20px 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p {
+  text-align: center;
+  font-size: 18px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Layout adjustments for pages */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

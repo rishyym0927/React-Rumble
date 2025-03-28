@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css'; // Import styles from App.css
 
-function App() {
-  const [count, setCount] = useState(0)
+// Modal Component
+function Modal({ show, handleClose, title, body }) {
+  if (!show) return null;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="modal-overlay" onClick={handleClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>{title}</h2>
+          <button className="close-button" onClick={handleClose}>
+            &times;
+          </button>
+        </div>
+        <div className="modal-body">{body}</div>
+        <div className="modal-footer">
+          <button className="close-button" onClick={handleClose}>
+            Close
+          </button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpen = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+
+  return (
+    <div className="App">
+      {/* Header Section */}
+      <header className="app-header">
+        <nav className="navbar">
+          <h1>My Website</h1>
+          <ul className="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Main Section */}
+      <main>
+        <h2><u>Welcome to My React App</u></h2>
+        <button onClick={handleOpen} className="primary-button">
+          Open Modal
+        </button>
+      </main>
+
+      {/* Modal Component */}
+      <Modal 
+        show={showModal} 
+        handleClose={handleClose} 
+        title="Modal Header"
+        body="This is the content inside the modal. You can customize it!"
+      />
+
+      {/* Footer Section */}
+      <footer className="app-footer">
+        <p>© 2025 My Website. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;

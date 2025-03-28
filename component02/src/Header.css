@@ -1,0 +1,22 @@
+/* Header-specific styles */
+.app-header {
+    background-color: var(--primary);
+    padding: 10px;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .navbar .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
