@@ -1,12 +1,29 @@
-# React + Vite
+# React Skeleton Loader Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React project demonstrates a **Skeleton Loading Component** designed to enhance user experience during API calls or content loading. The skeleton placeholders are animated to mimic the final content, such as text or images, while data is being fetched.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+1. **Skeleton Animation**:
+   - Displays animated skeleton loaders with a smooth shimmer effect.
+   - Visually resembles the shape of the final content.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Loading Trigger**:
+   - A "Load Card" button triggers the skeleton loader, simulating an API call.
+
+3. **Dynamic Content Replacement**:
+   - Placeholder skeletons are replaced by actual content when the API call is complete.
+
+4. **Customizable Shapes**:
+   - Easily adapt skeleton loaders to display text, images, or cards.
+
+---
+
+## Technology Stack
+
+- **React**: For building the skeleton loader component.
+- **CSS**: For styling animations and skeleton elements.
+
+---

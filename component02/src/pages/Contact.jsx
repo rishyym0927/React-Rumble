@@ -1,14 +1,6 @@
-import { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode); // Toggle the theme
-  };
-
+function App({isDarkMode, toggleTheme}) {
   return (
     <div
       style={{
@@ -45,7 +37,7 @@ function App() {
       {/* Content */}
       <div className="content">
         <h1>Welcome to the App</h1>
-        <p>This is a sample application demonstrating theme inversion and background changes.</p>
+        <p>This is a Contact Page</p>
       </div>
     </div>
   );

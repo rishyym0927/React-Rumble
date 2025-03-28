@@ -1,12 +1,28 @@
-# React + Vite
+# React Multipage App with Dark/Light Mode Toggle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React project demonstrates a multipage website featuring a **Dark/Light Mode Toggle**. The theme toggle works globally and persists across page navigation. Styling is implemented using CSS (without Tailwind CSS, as per requirements).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Dark/Light Mode Toggle**:
+  - A button enables toggling between dark and light modes.
+  - The selected theme applies globally and persists during navigation.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Multipage Navigation**:
+  - The app includes multiple pages (e.g., Home, About, Contact) with seamless routing.
+
+- **No Tailwind CSS**:
+  - Styling is achieved using plain CSS or styled-components for modularity.
+
+---
+
+## Technology Stack
+
+- **React**: For building the user interface.
+- **React Router**: To enable multipage navigation.
+- **CSS**: For styling and smooth theme transitions.
+- **Styled-Components (Optional)**: For scoped and modular CSS.
+
+---
