@@ -1,0 +1,120 @@
+.dynamic-table-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .export-btn {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .export-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .search-container {
+    margin-bottom: 15px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .dynamic-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .dynamic-table th, 
+  .dynamic-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .dynamic-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .sortable-header {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .sortable-header:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .sort-icon {
+    margin-left: 5px;
+    font-size: 0.7em;
+    color: #888;
+  }
+  
+  .loading-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+
+  .dynamic-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+  }
+  
+  .dynamic-table th, .dynamic-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .dynamic-table th {
+    background-color: #f4f4f4;
+    cursor: pointer;
+  }
+  
+  .dynamic-table-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .export-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .export-btn:hover {
+    background-color: #0056b3;
+  }
+  
