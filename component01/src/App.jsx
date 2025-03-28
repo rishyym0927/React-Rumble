@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app">
+      <h1>React Modal Example</h1>
 
-export default App
+      <button className="open-modal-btn" onClick={() => setModalOpen(true)}>
+        Open Modal
+      </button>
+
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={() => setModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <span>Modal Title</span>
+              <button className="close-button" onClick={() => setModalOpen(false)}>
+                &times;
+              </button>
+            </div>
+            <div className="modal-body">
+              <p>This is an enhanced modal with better styles!</p>
+            </div>
+            <div className="modal-footer">Modal Footer - Additional Info</div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;

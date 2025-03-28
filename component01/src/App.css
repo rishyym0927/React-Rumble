@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* General App Styling */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+  color: white;
+  font-family: "Arial", sans-serif;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Open Modal Button */
+.open-modal-btn {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  background-color: #ff7b54;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.open-modal-btn:hover {
+  background-color: #ff5733;
 }
 
-.card {
-  padding: 2em;
+/* 🟢 Fix: Make Overlay Full-Screen & Centered */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
 }
 
-.read-the-docs {
-  color: #888;
+/* 🟢 Fix: Make Modal Properly Centered & Full Width */
+.modal-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 95%;  /* Use most of the screen */
+  max-width: 600px; /* Limits width on large screens */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  color: #333;
+}
+
+/* Modal Header */
+.modal-header {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff7b54;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 15px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
 }
