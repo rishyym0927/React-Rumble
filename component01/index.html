@@ -1,13 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphic Modal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+            backdrop-filter: blur(10px); /* Blurred background */
+            -webkit-backdrop-filter: blur(10px);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal {
+            background: rgba(255, 255, 255, 0.2); /* Glass effect */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease-out;
+        }
+        .modal h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        .modal p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .modal button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .modal button:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: scale(1.05);
+        }
+        .show {
+            visibility: visible;
+            opacity: 1;
+        }
+        .show .modal {
+            transform: scale(1);
+        }
+        .open-button {
+            padding: 14px 22px;
+            font-size: 1rem;
+            background: white;
+            color: #6a11cb;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .open-button:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="openModal" class="open-button">Open Modal</button>
+
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <h2>Welcome to Glassmorphism</h2>
+            <p>This is a beautifully styled modal with a glass effect.</p>
+            <button id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const modalOverlay = document.getElementById("modalOverlay");
+        const openModalButton = document.getElementById("openModal");
+        const closeModalButton = document.getElementById("closeModal");
+
+        openModalButton.addEventListener("click", () => {
+            modalOverlay.classList.add("show");
+        });
+
+        closeModalButton.addEventListener("click", () => {
+            modalOverlay.classList.remove("show");
+        });
+
+        // Close modal when clicking outside of it
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove("show");
+            }
+        });
+    </script>
+
+</body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark/Light Mode Toggle</title>
+    <title>About & Contact Pages</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -48,7 +48,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        const App = () => {
+        const Page = ({ title, content }) => {
             const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
             useEffect(() => {
@@ -69,8 +69,8 @@
                         <a href="contact.html">Contact</a>
                     </nav>
                     <div className="container">
-                        <h1>Welcome to the Website</h1>
-                        <p>This is a multipage website with dark/light mode toggle.</p>
+                        <h1>{title}</h1>
+                        <p>{content}</p>
                         <button className="toggle-btn" onClick={toggleTheme}>
                             Toggle {theme === "light" ? "Dark" : "Light"} Mode
                         </button>
@@ -79,7 +79,16 @@
             );
         };
         
-        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+        const url = window.location.pathname;
+        let pageTitle = "About Us";
+        let pageContent = "This is the about page. Learn more about us here.";
+
+        if (url.includes("contact")) {
+            pageTitle = "Contact Us";
+            pageContent = "Get in touch with us through this page.";
+        }
+        
+        ReactDOM.createRoot(document.getElementById("root")).render(<Page title={pageTitle} content={pageContent} />);
     </script>
 </body>
 </html>

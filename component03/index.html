@@ -1,13 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        th:hover {
+            background: #0056b3;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const DynamicTable = () => {
+            const [data, setData] = useState([]);
+            const [search, setSearch] = useState("");
+            const [sortAsc, setSortAsc] = useState(true);
+
+            const handleFileUpload = (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const text = e.target.result;
+                    const rows = text.split("\n").map(row => row.split(","));
+                    setData(rows);
+                };
+                reader.readAsText(file);
+            };
+
+            const handleSort = () => {
+                const sortedData = [...data].slice(1).sort((a, b) => {
+                    if (a[0] < b[0]) return sortAsc ? -1 : 1;
+                    if (a[0] > b[0]) return sortAsc ? 1 : -1;
+                    return 0;
+                });
+                setSortAsc(!sortAsc);
+                setData([data[0], ...sortedData]);
+            };
+
+            return (
+                <div className="container">
+                    <h2>Dynamic Table</h2>
+                    <input type="file" accept=".csv" onChange={handleFileUpload} />
+                    <br />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value.toLowerCase())}
+                    />
+                    {data.length > 0 && (
+                        <table>
+                            <thead>
+                                <tr>
+                                    {data[0].map((header, index) => (
+                                        <th key={index} onClick={handleSort}>{header} ▼</th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.slice(1).filter(row => row.join(" ").toLowerCase().includes(search)).map((row, index) => (
+                                    <tr key={index}>
+                                        {row.map((cell, i) => <td key={i}>{cell}</td>)}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<DynamicTable />);
+    </script>
+</body>
 </html>

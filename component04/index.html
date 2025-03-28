@@ -1,13 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Accordion</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
+            color: #333;
+        }
+        .accordion {
+            width: 60%;
+            margin: auto;
+            text-align: left;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .accordion-item {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            background: #f9f9f9;
+        }
+        .accordion-header {
+            background: linear-gradient(45deg, #007BFF, #0056b3);
+            color: white;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+        .accordion-header:hover {
+            background: linear-gradient(45deg, #0056b3, #003d80);
+            transform: scale(1.03);
+        }
+        .accordion-content {
+            padding: 18px;
+            display: none;
+            background: #ffffff;
+            border-left: 6px solid #007BFF;
+            border-radius: 0 0 10px 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .open .accordion-content {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .arrow {
+            transition: transform 0.3s;
+            font-size: 20px;
+        }
+        .open .arrow {
+            transform: rotate(180deg);
+        }
+        h2 {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        const AccordionItem = ({ title, content }) => {
+            const [isOpen, setIsOpen] = useState(false);
+
+            return (
+                <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
+                    <div className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
+                        {title} <span className="arrow">▼</span>
+                    </div>
+                    <div className="accordion-content">{content}</div>
+                </div>
+            );
+        };
+
+        const Accordion = () => {
+            const faqItems = [
+                { title: "What is React?", content: "React is a JavaScript library for building user interfaces." },
+                { title: "How do I use React?", content: "You use React by creating components and managing state." },
+                { title: "Why use React?", content: "React makes it easy to create interactive UIs with reusable components." }
+            ];
+
+            return (
+                <div className="accordion">
+                    <h2>Frequently Asked Questions</h2>
+                    {faqItems.map((item, index) => (
+                        <AccordionItem key={index} title={item.title} content={item.content} />
+                    ))}
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<Accordion />);
+    </script>
+</body>
 </html>
