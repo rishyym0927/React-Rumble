@@ -1,68 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    /* Light Theme */
+    --bg-primary-light: #ffffff;
+    --bg-secondary-light: #f4f6f9;
+    --text-primary-light: #2c3e50;
+    --text-secondary-light: #6a7280;
+    --accent-light: #3498db;
+    --border-light: #e2e8f0;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    /* Dark Theme */
+    --bg-primary-dark: #121212;
+    --bg-secondary-dark: #1e1e1e;
+    --text-primary-dark: #ffffff;
+    --text-secondary-dark: #b0b0b0;
+    --accent-dark: #4ecdc4;
+    --border-dark: #333333;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Transitions */
+    --transition-speed: 0.3s;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Light Theme */
+body.light {
+    background-color: var(--bg-primary-light);
+    color: var(--text-primary-light);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Dark Theme */
+body.dark {
+    background-color: var(--bg-primary-dark);
+    color: var(--text-primary-dark);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Layout */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navigation */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.light .nav-container {
+    border-bottom-color: var(--border-light);
+}
+
+.dark .nav-container {
+    border-bottom-color: var(--border-dark);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+}
+
+.light .nav-links a {
+    color: var(--text-primary-light);
+}
+
+.dark .nav-links a {
+    color: var(--text-primary-dark);
+}
+
+.light .nav-links a:hover {
+    color: var(--accent-light);
+}
+
+.dark .nav-links a:hover {
+    color: var(--accent-dark);
+}
+
+/* Page Content */
+.page-content {
+    padding: 40px 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition-speed) ease;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Active Link Styling */
+.active-link {
+    font-weight: bold;
 }
