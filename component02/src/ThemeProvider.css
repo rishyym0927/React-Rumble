@@ -1,0 +1,29 @@
+body[data-theme="light"] {
+    background: #f0f0f0;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  body[data-theme="dark"] {
+    background: #1e1e1e;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .theme-toggle {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px;
+    background: linear-gradient(135deg, #ff8c00, #ff2d55);
+    color: white;
+    transition: 0.3s;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+  
