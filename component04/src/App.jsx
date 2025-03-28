@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './Accordion.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Accordion = ({ items, allowMultiple = false }) => {
+  const [openItems, setOpenItems] = useState([]);
+
+  const toggleItem = (index) => {
+    setOpenItems(prev => {
+      if (allowMultiple) {
+        return prev.includes(index)
+          ? prev.filter(i => i !== index)
+          : [...prev, index];
+      } else {
+        return prev.includes(index) ? [] : [index];
+      }
+    });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="accordion">
+      {items.map((item, index) => (
+        <div className={`accordion-item ${openItems.includes(index) ? 'open' : ''}`} 
+             key={index}>
+          <button 
+            className="accordion-header"
+            onClick={() => toggleItem(index)}
+            aria-expanded={openItems.includes(index)}
+            aria-controls={`content-${index}`}
+          >
+            <span>{item.title}</span>
+            <span className="chevron">▼</span>
+          </button>
+          
+          <div 
+            id={`content-${index}`}
+            className="accordion-content" 
+            aria-hidden={!openItems.includes(index)}
+          >
+            <div className="content-inner">{item.content}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default App
+export default Accordion;
