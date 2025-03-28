@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+
+// 1) Import the Modal component
+import Modal from "./Modal";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  // 2) Track whether modal is open or not
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // 3) Functions to open/close modal
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      {/* 4) Add a button to open the modal */}
+      <button onClick={openModal} style={{ marginTop: "1rem" }}>
+        Open Modal
+      </button>
+
+      {/* 5) Render the modal conditionally */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="My Awesome Modal"
+      >
+        <p>This is the body of the modal!</p>
+        <p>You can put any content you want here.</p>
+      </Modal>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
