@@ -1,0 +1,38 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal {
+    background-color: royalblue;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    position: relative;
+  }
+  .modal-header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .close-button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .open-modal-button {
+    border-color: antiquewhite;
+    margin-top: 10px;
+  }
+  open-modal-button:hover{
+    background-color: cornsilk;
+  }
