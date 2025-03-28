@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Home from './pages/Home';
+import About from './pages/About';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [theme, setTheme] = useState(() => {
+    // Load theme from localStorage or default to 'light'
+    return localStorage.getItem('theme') || 'light';
+  });
+
+  useEffect(() => {
+    // Apply the theme to the document body
+    document.body.className = theme;
+    // Save the theme to localStorage
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <header>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <button onClick={toggleTheme}>
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
+          </nav>
+        </header>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
