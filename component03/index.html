@@ -1,13 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Table Component</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      cursor: pointer;
+      background-color: #f4f4f4;
+    }
+    input, button {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSV Table Component</h1>
+  <input type="file" id="csvFileInput" accept=".csv">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <table>
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Name</th>
+        <th onclick="sortTable(1)">Age</th>
+        <th onclick="sortTable(2)">City</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Rows will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    let tableData = [];
+
+    // Handle file input change
+    document.getElementById('csvFileInput').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const csvContent = e.target.result;
+          Papa.parse(csvContent, {
+            header: true,
+            complete: function(results) {
+              tableData = results.data;
+              renderTable(tableData);
+            }
+          });
+        };
+        reader.readAsText(file);
+      }
+    });
+
+    // Render table rows
+    function renderTable(data) {
+      const tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = '';
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.Name || ''}</td>
+          <td>${row.Age || ''}</td>
+          <td>${row.City || ''}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // Sort table
+    function sortTable(columnIndex) {
+      const key = ['Name', 'Age', 'City'][columnIndex];
+      tableData.sort((a, b) => a[key]?.localeCompare(b[key], undefined, { numeric: true }) || 0);
+      renderTable(tableData);
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const filteredData = tableData.filter(row =>
+        Object.values(row).some(value => value?.toLowerCase().includes(query))
+      );
+      renderTable(filteredData);
+    });
+  </script>
+</body>
 </html>
