@@ -1,12 +1,43 @@
 :root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --text-primary: #213547;
+  --text-secondary: #646cff;
+  --border-color: #646cff;
+  --button-bg: #f9f9f9;
+  --button-hover: #747bff;
+  --nav-bg: #ffffff;
+  --nav-border: #e0e0e0;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --submit-button-bg: #646cff;
+  --submit-button-text: #ffffff;
+  --submit-button-hover: #535bf2;
+}
+
+.dark-theme {
+  --bg-primary: #242424;
+  --bg-secondary: #1a1a1a;
+  --text-primary: rgba(255, 255, 255, 0.87);
+  --text-secondary: #646cff;
+  --border-color: #646cff;
+  --button-bg: #1a1a1a;
+  --button-hover: #535bf2;
+  --nav-bg: #1a1a1a;
+  --nav-border: #333333;
+  --input-bg: #2a2a2a;
+  --input-border: #404040;
+  --submit-button-bg: #646cff;
+  --submit-button-text: #ffffff;
+  --submit-button-hover: #535bf2;
+}
+
+:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,11 +46,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--text-secondary);
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--button-hover);
 }
 
 body {
@@ -42,27 +74,145 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--border-color);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.theme-toggle {
+  position: static;
+  margin-left: 1rem;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 1000;
+}
+
+.nav-brand a {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-secondary);
+}
+
+.nav-theme {
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  padding: 6rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 8rem);
+}
+
+.home-page h1 {
+  margin-bottom: 1.5rem;
+}
+
+.home-page p {
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--border-color);
+}
+
+.contact-form button[type="submit"] {
+  background-color: var(--submit-button-bg);
+  color: var(--submit-button-text);
+  padding: 0.8em 2em;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: var(--submit-button-hover);
+}
+
+.contact-form button[type="submit"]:focus {
+  outline: 2px solid var(--submit-button-bg);
+  outline-offset: 2px;
+}
+
+.about-content {
+  margin-top: 2rem;
+}
+
+.about-content h2 {
+  color: var(--text-secondary);
+  margin-top: 1.5rem;
 }
