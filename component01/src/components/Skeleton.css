@@ -1,0 +1,22 @@
+.skeleton {
+    background: #ddd;
+    border-radius: 4px;
+    margin: 5px 0;
+  }
+  
+  .skeleton.text {
+    height: 16px;
+    width: 100%;
+  }
+  
+  .skeleton.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  
+  .skeleton.rectangle {
+    height: 100px;
+    width: 100%;
+  }
+  
