@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+  const openModal = () => {
+    setClosing(false);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setClosing(true);
+    setTimeout(() => setIsModalOpen(false), 300); // Wait for animation
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      {/* Dark Overlay (Only visible when modal is open) */}
+      {isModalOpen && <div className={`overlay ${closing ? "fade-out" : ""}`}></div>}
+
+      {/* Show Open Modal button only when modal is NOT open */}
+      {!isModalOpen && (
+        <button className="open-btn" onClick={openModal}>
+          Open Modal
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      )}
+
+      {/* Modal with animations */}
+      {isModalOpen && (
+        <div className={`glass-div ${closing ? "hide" : "show"}`}>
+          <div className="header">Header</div>
+          <div className="body">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s.
+          </div>
+          <div className="close-btn" onClick={closeModal}>
+            Close
+          </div>
+        </div>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
