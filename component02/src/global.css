@@ -1,0 +1,10 @@
+/* global.css (Optional) */
+body {
+  line-height: 1.5;
+}
+
+/* Additional global classes or styling */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
