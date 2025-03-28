@@ -5,9 +5,131 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+      .table-container {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4a90e2;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th, td {
+        padding: 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #4a90e2;
+        color: white;
+        cursor: pointer;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      input[type="file"], input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        transition: border-color 0.3s;
+      }
+      input[type="file"]:hover, input[type="text"]:hover {
+        border-color: #4a90e2;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #357ABD;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="table-container">
+      <h2>Dynamic CSV Table</h2>
+      <input type="file" id="csvFileInput" accept=".csv" />
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <table id="dataTable">
+        <thead>
+          <tr id="tableHeader"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      const csvFileInput = document.getElementById('csvFileInput');
+      const searchInput = document.getElementById('searchInput');
+      const tableBody = document.getElementById('tableBody');
+      const tableHeader = document.getElementById('tableHeader');
+
+      let tableData = [];
+
+      csvFileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const text = e.target.result;
+            parseCSV(text);
+          };
+          reader.readAsText(file);
+        }
+      });
+
+      function parseCSV(text) {
+        const rows = text.split('\n').map(row => row.split(','));
+        const headers = rows.shift();
+        generateTable(headers, rows);
+      }
+
+      function generateTable(headers, rows) {
+        tableHeader.innerHTML = headers.map(header => `<th>${header}</th>`).join('');
+        tableData = rows;
+        renderTable(rows);
+      }
+
+      function renderTable(data) {
+        tableBody.innerHTML = data.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('');
+      }
+
+      searchInput.addEventListener('input', (e) => {
+        const filter = e.target.value.toLowerCase();
+        const filteredData = tableData.filter(row => row.some(cell => cell.toLowerCase().includes(filter)));
+        renderTable(filteredData);
+      });
+
+      tableHeader.addEventListener('click', () => {
+        tableData.reverse();
+        renderTable(tableData);
+      });
+    </script>
   </body>
 </html>

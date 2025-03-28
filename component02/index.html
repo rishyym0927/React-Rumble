@@ -4,10 +4,119 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Educational Website</title>
+    <style>
+      :root {
+        --bg-color: #f4f4f4;
+        --text-color: #333;
+        --accent-color: #007bff;
+        --border-radius: 12px;
+        --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --card-bg: #fff;
+      }
+      [data-theme="dark"] {
+        --bg-color: #1e1e1e;
+        --text-color: #eaeaea;
+        --accent-color: #1e90ff;
+        --card-bg: #2a2a2a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+        padding: 0 20px;
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: var(--accent-color);
+        color: #fff;
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      nav {
+        padding: 15px;
+        background-color: var(--accent-color);
+        border-radius: var(--border-radius);
+        margin: 20px 0;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      #root {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .card {
+        background-color: var(--card-bg);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body data-theme="light">
+    <nav>
+      <a href="#" onclick="navigate(event, 'Home')">Home</a>
+      <a href="#" onclick="navigate(event, 'Courses')">Courses</a>
+      <a href="#" onclick="navigate(event, 'About Us')">About</a>
+      <a href="#" onclick="navigate(event, 'Contact Us')">Contact</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">🌗 Toggle Theme</button>
+    <div id="root">
+      <div class="card">
+        <h1>Welcome to Our Educational Platform</h1>
+        <p>Explore courses and expand your knowledge.</p>
+      </div>
+    </div>
+    <script>
+      function toggleTheme() {
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+      });
+
+      function navigate(event, page) {
+        event.preventDefault();
+        const content = {
+          'Home': '<h1>Welcome to Our Educational Platform</h1><p>Explore courses and expand your knowledge.</p>',
+          'Courses': '<h1>Our Courses</h1><p>We offer a wide range of courses including Science, Technology, and Arts.</p>',
+          'About Us': '<h1>About Us</h1><p>We are dedicated to providing quality education to learners worldwide.</p>',
+          'Contact Us': '<h1>Contact Us</h1><p>Reach out via email or phone for any inquiries.</p>'
+        };
+        const root = document.getElementById('root');
+        root.innerHTML = `<div class="card">${content[page]}</div>`;
+      }
+    </script>
   </body>
 </html>

@@ -4,10 +4,46 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Accordion FAQ Section</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: Arial, sans-serif; background-color: #f0f8ff; padding: 20px; }
+      .accordion { background-color: #ffffff; border-radius: 16px; padding: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); margin-bottom: 15px; transition: all 0.3s ease; }
+      .accordion:hover { transform: translateY(-5px); }
+      .accordion-header { cursor: pointer; padding: 15px; font-size: 1.4rem; background-color: #e6f7ff; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; }
+      .accordion-content { padding: 15px; display: none; font-size: 1.1rem; line-height: 1.6; }
+      .active .accordion-content { display: block; }
+      .icon { transition: transform 0.3s ease; }
+      .active .icon { transform: rotate(180deg); }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <h2 style="text-align: center; margin-bottom: 20px;">🎭 Accordion/FAQ Section</h2>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">What is HTML? <span class="icon">▼</span></div>
+      <div class="accordion-content">HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.</div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">What is CSS? <span class="icon">▼</span></div>
+      <div class="accordion-content">CSS stands for Cascading Style Sheets. It is used to style and layout web pages.</div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">What is JavaScript? <span class="icon">▼</span></div>
+      <div class="accordion-content">JavaScript is a programming language that enables interactive web pages and is an essential part of web applications.</div>
+    </div>
+
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">What is Vite? <span class="icon">▼</span></div>
+      <div class="accordion-content">Vite is a next-generation frontend tool that offers faster and leaner development experience for modern web projects.</div>
+    </div>
+
+    <script>
+      function toggleAccordion(element) {
+        element.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
