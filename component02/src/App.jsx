@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import "./styles.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const ThemeContext = createContext();
+
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
 
-export default App
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <button className="theme-toggle" onClick={toggleTheme}>
+      {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
+    </button>
+  );
+};
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <Router>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <ThemeToggle />
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
+};
+
+export default App;
