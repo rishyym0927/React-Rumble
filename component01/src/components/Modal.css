@@ -1,0 +1,75 @@
+/* Background overlay with a fade-in effect */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Adds blur for a glass effect */
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Modal box with glassmorphism effect */
+  .modal-content {
+    background: rgba(255, 255, 255, 0.15); /* Translucent background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 420px;
+    max-width: 90%;
+    position: relative;
+    backdrop-filter: blur(20px); /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    transform: scale(0.8);
+    animation: scaleUp 0.3s ease-in-out forwards;
+  }
+  
+  /* Header Styling */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+  }
+  
+  /* Close button styling */
+  .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .close-btn:hover {
+    transform: rotate(180deg);
+    color: #ff6b6b;
+  }
+  
+  /* Body styling */
+  .modal-body {
+    margin-top: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Scale-up animation */
+  @keyframes scaleUp {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+  }
+  

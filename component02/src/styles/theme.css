@@ -1,0 +1,40 @@
+/* Default (Light Mode) */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --button-bg: #ff6b6b;
+    --button-text: white;
+  }
+  
+  /* Dark Mode */
+  .dark {
+    --bg-color: #1e1e1e;
+    --text-color: #f1f1f1;
+    --button-bg: #4a90e2;
+    --button-text: #fff;
+  }
+  
+  /* Apply Theme */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  /* Theme Toggle Button */
+  .theme-toggle {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+  

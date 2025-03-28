@@ -1,81 +1,37 @@
-# ⚛️ React Rumble Event 
+# 🚀 Frontend Component Challenge - Round 1
 
-Welcome to React Rumble – the ultimate coding duel where innovation meets adrenaline! Step into the arena where your React mastery will be tested in electrifying 1v1 showdowns. In Round 1, harness the power of GPT to quickly craft simple components and build a strong foundation. But when Round 2 arrives, the challenge intensifies: you must rely solely on your own skills to construct intricate components—no AI assistance allowed. Every second counts as you outpace your opponent in a battle of precision, creativity, and sheer coding speed. Gear up, let your React prowess shine, and seize your title as the champion of React Rumble! 🚀
+This repository contains five essential frontend components that demonstrate **React.js**, **CSS**, and **JavaScript** functionalities. These components are designed to improve **user experience** and **performance**.
 
-Once you've completed your tasks, you'll be submitting your work using **GitHub**. Below are the details of the components you need to create, along with instructions on how to submit your work.
+## 🛠️ Components Implemented
 
-## 🛠️ Round 1
+### 1️⃣ 📦 Modal Component
+A functional modal with the following features:
+- ✨ Overlay with a semi-transparent background.
+- 🏷️ Includes a **header**, **body**, and a **close button**.
+- 🚪 Implements **open/close** functionality.
+- 🎨 Styled using **CSS**.
 
-### 1. 📦 Modal Component  
-Create a functional modal that:  
-- ✨ Appears as an overlay with a semi-transparent background  
-- 🏷️ Contains a header, body, and close button  
-- 🚪 Implements open/close functionality  
-- 🎨 Uses CSS for styling 
+### 2️⃣ 🎨 Dark/Light Mode Toggle
+A **global theme switcher** with:
+- 🔁 **Persists across page navigation**.
+- 🌑 **Toggles between dark/light modes globally**.
+- 🛠️ Styled using **CSS or styled-components** (**No Tailwind CSS** allowed).
 
-### 2. 🎨 Dark/Light Mode Toggle (⚠️Use of Tailwind CSS is **NOT** allowed)
-Build a theme switcher button on a multipage website that:  
-- 🔁 Persists across page navigation  
-- 🌑 Toggles between dark/light modes globally  
-- 🛠️ Uses **CSS** or **styled-components**   
+### 3️⃣ 🔍 Dynamic Table
+A **searchable and sortable** table:
+- ⚡ **Imports data from a CSV file**.
+- 📊 **Sorting functionality** (default: ascending).
+- 🔄 **Updates rows dynamically** without refreshing the page.
+- 📥 Includes a **search input field**.
 
-### 3. 🔍 Dynamic Table  
-Create a table component that:   
-- ⚡ Import data from CSV file into the table
-- 📊 Button for sorting data (default ascending)
-- 🔄 Updates displayed rows without page refresh  
-- 📥 Includes a search input field
+### 4️⃣ 🎭 Accordion/FAQ Section
+An interactive **collapsible FAQ section**:
+- 📌 Expands/collapses content when clicked.
+- 📂 Supports **multiple collapsible items**.
+- 🔄 Allows **one or multiple items to be open at once**.
 
-### 4. 🎭 Accordion/FAQ Section
-Create an interactive accordion component that:
-- 📌 Expands/collapses content when clicked
-- 📂 Supports multiple collapsible items
-- 🔄 Allows one or multiple items open at once
-
-### 5. 🚀 Skeleton Loading Component
-Create a placeholder loading component that:
-- 🎨 Displays animated skeleton loaders
-- ⏳ Enhances UX while fetching API data
-- ⚡ Supports different shapes (text, images, cards)
-
-
-
-## 📤 Submission Guide
-
-### 1. 🍴 Fork the Repository  
-First, fork this repository to your own GitHub account by clicking the **Fork** button in the top right corner of the repo page.  
-
-### 2. 📤 Clone Repository  
-Fire up your Git Bash/Terminal and ~steal~ clone the repo:
-```bash
-git clone https://github.com/<YourGitHubUsername>/FunctionalComponents.git
-```
-### 3. 🌿 Use your roll number as branch name
-Once you’ve successfully acquired the repo, create a new branch named after your Roll No. (We know you're special, so make it unique!):
-```bash
-git checkout -b <YourRollNumber>
-```
-### 4. 💾 Commit Changes
-After completing the tasks, stage changes + write a commit message that’s better than "idk lol":
-```bash
-git add .
-git commit -m "idk lol"
-```
-### 5. 🚀 Push Branch
-Time to send your masterpiece into the wild! Push your branch to the remote repository
-```bash
-git push origin <YourRollNumber>
-```
-### 6. 🎉 Create a Pull Request (PR)
-1. Go to the GitHub repo.
-2. Click “Compare & Pull Request”.
-3. Title: [YourRollNumber] I did the thing!
-4. Hit send.
-
-Congrats! Your assignment is now someone else’s problem (mine🙂).
-
-## 🏆 Judging Criteria
-Your components will be judged on several key aspects: functionality, code quality, user experience, and innovation. The evaluation will consider how effectively your components perform their intended tasks, the clarity and maintainability of your code, and your adherence to best practices in React development. 
-Special attention will be given to the efficiency of state management and API integration, as well as robust error handling.
-
-Good luck!
+### 5️⃣ 🚀 Skeleton Loading Component
+A smooth **loading skeleton** for enhanced UX:
+- 🎨 **Displays animated skeleton loaders**.
+- ⏳ **Enhances user experience** while fetching API data.
+- ⚡ Supports different shapes (**text, images, cards**).

@@ -1,0 +1,62 @@
+/* Table Container */
+.table-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background */
+    color: white;
+  }
+  
+  /* Search Box */
+  .search-box {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Sort Button */
+  .sort-btn {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .sort-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Table Header */
+  thead th {
+    background-color: #f1f1f1; /* Light grey background */
+    color: #000; /* Black text */
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Table Rows */
+  tbody tr {
+    background-color: #222;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  
+  /* Table Cells */
+  td {
+    padding: 10px;
+    border: 1px solid #444;
+  }
+  

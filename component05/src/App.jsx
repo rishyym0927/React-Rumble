@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import SkeletonLoader from "./components/SkeletonLoader";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData({
+        image: "https://via.placeholder.com/150",
+        title: "Skeleton Loading Example",
+        description: "This is a sample data after loading.",
+      });
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1 style={{ textAlign: "center", fontSize: "2rem", marginBottom: "20px" }}>
+        Skeleton Loader Example
+      </h1>
 
-export default App
+      {/* Skeleton Placeholder */}
+      {loading ? <SkeletonLoader type="card" /> : (
+        <div className="skeleton-card">
+          <img src={data.image} alt="Loaded Content" className="skeleton-image" />
+          <h2 style={{ color: "white" }}>{data.title}</h2>
+          <p style={{ color: "#ccc" }}>{data.description}</p>
+        </div>
+      )}
+    </div>
+  );
+}
