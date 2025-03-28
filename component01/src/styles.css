@@ -1,0 +1,244 @@
+
+/* Base Styles */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Starry Background */
+.stars, .twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  background: #000 url('https://i.imgur.com/YKY28eT.png') repeat top center;
+  z-index: -2;
+}
+
+.twinkling {
+  background: transparent url('https://i.imgur.com/XYMF4ca.png') repeat top center;
+  z-index: -1;
+  animation: twinkle 200s linear infinite;
+}
+
+@keyframes twinkle {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+/* App Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.content {
+  text-align: center;
+  z-index: 1;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #f9d71c;
+  text-shadow: 0 0 10px #ff6bff, 0 0 20px #ff6bff;
+  margin-bottom: 2rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff6bff, 0 0 20px #ff6bff;
+  }
+  to {
+    text-shadow: 0 0 15px #ff6bff, 0 0 30px #ff6bff, 0 0 40px #ff6bff;
+  }
+}
+
+/* Main Button */
+.main-button {
+  position: relative;
+  background: linear-gradient(45deg, #ff6bff, #9c27b0);
+  border: none;
+  color: white;
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(156, 39, 176, 0.5);
+}
+
+.main-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(156, 39, 176, 0.8);
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.main-button:hover .button-glow {
+  opacity: 0.6;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(135deg, #3a0ca3, #7209b7, #f72585);
+  color: white;
+  padding: 3rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(247, 37, 133, 0.6);
+  border: 2px solid #f9d71c;
+  animation: portalOpen 0.5s ease-out forwards;
+}
+
+@keyframes portalOpen {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #f9d71c;
+  text-shadow: 0 0 10px rgba(249, 215, 28, 0.7);
+}
+
+.modal-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #f9d71c;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+}
+
+.portal-button {
+  background: linear-gradient(45deg, #f72585, #7209b7);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portal-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(247, 37, 133, 0.8);
+}
+
+.portal-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #7209b7, #f72585);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.portal-button:hover::before {
+  opacity: 1;
+}
+
+/* Sparkle Animation */
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #f9d71c;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 2s infinite;
+  box-shadow: 0 0 5px 1px #f9d71c;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+}

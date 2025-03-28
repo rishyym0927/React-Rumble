@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./styles.css"; // We'll add custom CSS animations here
 
-function App() {
-  const [count, setCount] = useState(0)
+const Modal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button onClick={onClose} className="close-button">
+          ✖
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <h2 className="modal-title">Enchanted Gateway</h2>
+        <p className="modal-text">Step through the portal into a realm of magic and wonder.</p>
+        <div className="sparkle-container">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="sparkle" style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              transform: `scale(${Math.random() * 0.5 + 0.5})`
+            }}></div>
+          ))}
+        </div>
+        <button onClick={onClose} className="portal-button">
+          Close Portal
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <div className="app-container">
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="content">
+        <h1 className="main-title">Magical Portal App</h1>
+        <button 
+          onClick={() => setIsModalOpen(true)} 
+          className="main-button"
+        >
+          <span className="button-text">Open Portal</span>
+          <span className="button-glow"></span>
+        </button>
+      </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </div>
+  );
+};
+
+export default App;
