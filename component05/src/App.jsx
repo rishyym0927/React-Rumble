@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import SkeletonLoader from "./components/SkeletonLoader/SkeletonLoader.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      {/* Text Loaders */}
+      <h2>Loading Content...</h2>
+      <SkeletonLoader type="text" count={3} />
+      
+      {/* Profile Image Loader */}
+      <h2>Loading Profile</h2>
+      <SkeletonLoader type="image" circle width="100px" height="100px" />
+      
+      {/* Card Loader */}
+      <h2>Loading Cards</h2>
+      <SkeletonCard />
+      <SkeletonCard />
+      
+      {/* Custom Dimensions */}
+      <h2>Loading Custom Elements</h2>
+      <SkeletonLoader width="200px" height="40px" />
+      <SkeletonLoader type="image" width="100%" height="300px" />
+    </div>
+  );
 }
-
-export default App
